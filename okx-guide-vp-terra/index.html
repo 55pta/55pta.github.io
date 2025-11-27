@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redirecting...</title>
+
+    <!-- Google Analytics -->
+    <!-- ВСТАВЬ СВОЙ GA ID ВМЕСТО G-XXXXXXXXXX -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-XXXXXXXXXX');
+    </script>
+
+    <script>
+        // Автоопределение источника клика
+        const ref = document.referrer || "direct";
+
+        // Тег для соцсетей
+        let source = "other";
+
+        if (ref.includes("t.me") || ref.includes("telegram")) source = "telegram";
+        if (ref.includes("twitter") || ref.includes("x.com")) source = "twitter";
+        if (ref.includes("instagram")) source = "instagram";
+        if (ref.includes("facebook")) source = "facebook";
+
+        // Отправка события в GA
+        gtag('event', 'click_redirect', {
+            source: source,
+            referrer: ref,
+            to: 'okx'
+        });
+
+        // Через 300 мс — переход на OKX
+        setTimeout(() => {
+            window.location.href = "https://okx.com/join/4986100";
+        }, 300);
+    </script>
+</head>
+<body>
+    Переход…
+</body>
+</html>
